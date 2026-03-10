@@ -1,0 +1,9 @@
+Database and RabbitMQ cannot be sync in a transaction
+
+So while performing database operation the corresponding event is added to the outbox table in a single transaction , then separate delivery process is used to send the events from outbox table to the rabbitmq. 
+
+There will be bit of delay in event delivery but the outbox table and database will be in sync.
+
+The retry mechanism is used to ensure that the event from the outbox table reaches at least once to the rabbitmq which can lead to duplicate events. (resilient message handling)
+
+De depulication of events must be handled explicitly. (Idempotent consumers)

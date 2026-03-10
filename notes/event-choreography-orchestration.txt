@@ -1,0 +1,27 @@
+Choreography 
+
+simple generation of event by micro service to be used by other micro service and so on to complete a business process 
+
+Orchestration 
+
+centralized control of business process so that compensatory actions (backward compatibility) is ensured
+
+Saga is architecture for implementing Distributes transaction across multiple systems
+
+Saga can be implemented in two ways
+
+Saga Orchestration (centralized control)
+
+Simple implementation
+Tight occupling on orchestrator
+Easy to debug and track
+High risk of failure if orchestrator fails
+
+Saga Choreography (decentralized control)
+Service interact with each other independently by publishing and consuming events also performing compenstory actions by themselves 
+No centralized control
+Loose coupling
+Harder to debug and track
+Low risk of failure if one service fails
+
+

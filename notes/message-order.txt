@@ -1,0 +1,16 @@
+Message order
+
+OrderPlaced
+OrderBilled
+OrderShipped
+
+ProductCreated
+ProductNameUpdated
+
+second event is dependent on first
+
+In the environment of competing consumers the message order cannot be maintained
+
+Use paritions (Apache kafka), parition only maps to one consumer consuming messages sequentially
+To  maintain particular order of events sometimes saga is used as gateway to only publish commands after certain events haev occured
+handling failure of messages and order of messages ?

@@ -1,0 +1,24 @@
+topic queue exchange routing key binding key
+TTl -> time to live
+acknowlegdement
+how many messages it fetches at single time
+
+Producer -> sends messages
+Consumer -> Consumes messages
+
+Broker working
+1. exchange -> direct, fanout, topic
+2. Queues tied to exchange
+3. messages goes to Queues through exchanges
+4.consumers subscribe to Queues
+5. after the message is consumed and is acknowlegded by consumer to rabbit mq, it is deleted from the queue (acknowledgement)
+6.If there is no acknowledgement after set time (default 30 mins), the consumer connection is closed and the 'UNACKNOWLEDGED' messages are sent back to the queue
+
+Note: Acknowledgement must be sent to same channel that received the message
+
+Messages are distributed to different consumers in round-robin fashion
+
+Message Durability
+durable queues and persistent messages
+
+Fair dispatch -< prefetch count stops message from being sent to consumer until it acknowledges the previous message

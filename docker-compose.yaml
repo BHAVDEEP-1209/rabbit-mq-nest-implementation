@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  # RabbitMQ service
+  rabbitmq:
+    container_name: nest-application-rabbitmq
+    image: 'rabbitmq:3-management-alpine'
+    restart: always
+    ports:
+      - '${RABBITMQ_FORWARD_PORT:-5673}:5672'
+      - '${RABBITMQ_MANAGEMENT_FORWARD_PORT:-15673}:15672'
+    environment:
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_USERNAME:-guest}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_PASSWORD:-guest}
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq/
+      - rabbitmq_logs:/var/log/rabbitmq
+    networks:
+      - nest-application-network
+
+  
+networks:
+  nest-application-network:
+    name: nest-application-shared-networks
+    external: true
+
+volumes:
+  rabbitmq: {}
+  rabbitmq_logs: {}

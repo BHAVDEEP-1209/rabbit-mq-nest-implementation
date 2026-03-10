@@ -1,0 +1,22 @@
+Idempotent consumers 
+
+De depulication of message handled by the consumers
+
+Reasons for duplication of events
+1. Message is consumed  by consumer but acknowledgement is not send to rabbitmq so it again resends
+2. Acknowledgement is sent but the time period of acknowledgement is expired so it again resends
+3. Producer (fetches the messages from outbox and publish to rabbitmq) must also delete or mark the messages as processed, if it fails to do so then the producer will again publish already processed messages to the message broker (rabbitmq)
+
+Inbox table for consumer
+
+1. Message handler for consumer checks if the message is already processed by checking the inbox table
+2. If not it performs the necessary DB changes and updated the message as processed in inbox table in a single transaction
+
+
+alreadyProcessedFunction()
+
+Transaction {
+    db operation
+    idempotent table update  : if exception occurs transaction fails and does not acknowledge message broker so message is again sent this time handled by alreadyProcessedFunction
+    transaction commit on success
+}

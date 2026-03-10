@@ -1,0 +1,29 @@
+When to use sync (HTTP) or async (rabbitmq message broker) to communicate with other micro service
+
+Rabbit MQ is just a messahe broker, the whole mechanism of interacting with two services through messages including implementing transactional outbox, Idempotent, message signature and versioning and rety mechanism is called message bus. 
+
+The built in ready to use message bus is NServiceN Bus
+
+When we want response back from the operation that is synchronous HTTP
+else asynchronous 
+
+How to respond back to UI after async operation has been done ?
+
+RAbbit MQ implementation
+message broker -> topic fanout exchange
+
+Transactional outbox pattern -> this solve dual write problem alternative event sourcing
+Idempotent consumers -> de depulication of messages
+event orchestration vs choreography
+Resilient Message Handling
+EDA
+
+Problem with TypeORM transaction
+
+How databases table occupy memory consuming resourcing ?
+tombstones while deleting the records in database ? inefficient -> marking records instead of deleting them
+deadlocks ?
+ACID properties
+
+
+git add -f notes/*.txt

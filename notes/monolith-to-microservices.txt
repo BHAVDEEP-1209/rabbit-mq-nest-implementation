@@ -1,0 +1,11 @@
+Self consuming messages
+
+messages
+Commands
+Events
+
+(instruction) -> must be handled only once by one specific handler to do task
+1. Publish command to message broker , the monolith conumes command do async operation and publish event to the message broker, the monolith again consumes the event to di async operation
+
+(notification) -> can be consumed multiple times
+2. Publish event after direclty doing the db operation synchronousy then publishing event to message broker to be consumed by monolith to do async operation
