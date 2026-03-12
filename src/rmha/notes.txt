@@ -1,0 +1,4 @@
+Resilient message handling
+
+RabbitMQ simulation tool
+nest-commander
